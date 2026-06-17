@@ -43,13 +43,13 @@ html, body {
 }
 
 #bp-logo {
-  width: 160px;
+  width: min(160px, 35vw);
   margin-bottom: 1.5rem;
   animation: glow 3s ease-in-out infinite;
 }
 
 #splash-content h1 {
-  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  font-size: clamp(1.4rem, 6vw, 5.5rem);
   font-weight: 800;
   letter-spacing: -0.02em;
   background: linear-gradient(135deg, #fff 0%, #3db852 100%);
