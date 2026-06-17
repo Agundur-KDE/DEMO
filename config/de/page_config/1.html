@@ -40,21 +40,32 @@ function playZenChime() {
     } catch(e) {}
 }
 
-function startDemo() {
-    playZenChime();
-    var splash       = document.getElementById('splash');
-    var videoSection = document.getElementById('video-section');
-    var video        = document.getElementById('demo-video');
-    splash.style.opacity       = '0';
-    splash.style.pointerEvents = 'none';
-    videoSection.classList.add('visible');
-    video.volume = 0.85;
-    video.play().catch(function() { showFeatures(); });
+function showFeatures() {
+    var vs = document.getElementById('video-section');
+    var f  = document.getElementById('features');
+    vs.style.display = 'none';
+    f.style.display  = 'flex';
+    // trigger reflow so transition fires
+    f.offsetHeight;
+    f.style.opacity        = '1';
+    f.style.pointerEvents  = 'all';
 }
 
-function showFeatures() {
-    document.getElementById('video-section').classList.remove('visible');
-    document.getElementById('features').classList.add('visible');
+function startDemo() {
+    playZenChime();
+
+    document.getElementById('splash').style.display = 'none';
+
+    var vs    = document.getElementById('video-section');
+    var video = document.getElementById('demo-video');
+    vs.style.display = 'flex';
+    vs.style.opacity = '1';
+
+    video.volume = 0.85;
+    var p = video.play();
+    if (p !== undefined) {
+        p.catch(showFeatures);
+    }
 }
 </script>
 <!--sebastiany.net::js_bottom::End-->
