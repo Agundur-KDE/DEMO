@@ -37,7 +37,7 @@ function playZenChime() {
             osc.start(s);
             osc.stop(s + n.d);
         });
-    } catch(e) {}
+    } catch(e) { return; }
 }
 
 function showFeatures() {
