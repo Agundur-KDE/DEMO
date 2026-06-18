@@ -239,6 +239,10 @@ html, body {
 
 .cta {
   margin-top: 0.5rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .gh-btn {
@@ -256,6 +260,14 @@ html, body {
   background: #3db852;
   color: #fff;
   box-shadow: 0 0 35px rgba(61, 184, 82, 0.4);
+}
+.gh-btn--star {
+  background: #3db852;
+  color: #fff;
+}
+.gh-btn--star:hover {
+  background: #2a8a3b;
+  box-shadow: 0 0 35px rgba(61, 184, 82, 0.6);
 }
 
 @keyframes fadeInUp {

@@ -256,7 +256,13 @@ html, body {
 }
 
 // ── CTA ──────────────────────────────────────────────────
-.cta { margin-top: 0.5rem; }
+.cta {
+    margin-top: 0.5rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 
 .gh-btn {
     display: inline-block;
@@ -273,6 +279,16 @@ html, body {
         background: $green;
         color: #fff;
         box-shadow: 0 0 35px rgba(61, 184, 82, 0.4);
+    }
+
+    &--star {
+        background: $green;
+        color: #fff;
+
+        &:hover {
+            background: $green-dark;
+            box-shadow: 0 0 35px rgba(61, 184, 82, 0.6);
+        }
     }
 }
 
