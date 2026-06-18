@@ -1,33 +1,65 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>A BonsaiPress project – Coming Soon</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      background: #f9f9f9;
-      font-family: sans-serif;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      color: #333;
+<!DOCTYPE html><html lang="de"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="generator" content="BonsaiPress" /><link rel="canonical" href="https://wwww.domain.tld" /><title>BonsaiPress — Demo</title><meta name="description" content="BonsaiPress: lean multi-client CMS. No database. Static HTML export. Git workflow. One command deploy." /><meta name="generator" content="BonsaiPress" /><link href="/_resources/css/master.css" rel="stylesheet" media="screen" /></head><body><div id="splash"><div id="splash-bg"></div><div id="splash-content"><img src="/_resources/img/BonsaiPress.png" alt="BonsaiPress" id="bp-logo"><h1>BonsaiPress</h1><p>The lean multi-client CMS.<br>No database. Just files, Git, and speed.</p><button id="start-btn" onclick="startDemo()">&#9654; Experience BonsaiPress</button></div></div><div id="video-section"><video id="demo-video" playsinline onended="showFeatures()"><source src="/_resources/video/Bonsai.mp4" type="video/mp4"></video><button id="skip-btn" onclick="showFeatures()">Skip ›</button></div><div id="features"><div id="features-bg"></div><div id="features-content"><img src="/_resources/img/BonsaiPress.png" alt="BonsaiPress" class="logo-sm"><h2>What makes BonsaiPress different</h2><div class="feature-grid"><div class="feature-card"><div class="feature-icon">🌳</div><h3>No Database</h3><p><code>site_structure.xml</code> is the single source of truth. No MySQL. No migrations. No runtime dependencies.</p></div><div class="feature-card"><div class="feature-icon">⚡</div><h3>Static Export</h3><p>One command generates pure HTML. Blazing fast, zero PHP at runtime — just files on a web server.</p></div><div class="feature-card"><div class="feature-icon">🔀</div><h3>Multi-Client</h3><p>One CMS engine, unlimited client projects. Each project is its own Git repo. Switch in seconds.</p></div><div class="feature-card"><div class="feature-icon">🚀</div><h3>Hash-Diff Deploy</h3><p>Only changed files are uploaded via FTPS. No full syncs. No downtime. No guesswork.</p></div></div><div class="workflow-section"><h3>The entire workflow</h3>
+<pre class="code-block"><span class="cmd">bonsai start</span>               <span class="cmt"># Docker up: CMS :8080, Preview :8081, Watcher :8001</span>
+<span class="cmd">bonsai new myclient</span>        <span class="cmt"># New project from template, git-ready</span>
+<span class="cmd">bonsai static</span>              <span class="cmt"># Generate pure static HTML into current/static/</span>
+<span class="cmd">bonsai deploy</span>              <span class="cmt"># Upload only what changed — hash-diff via FTPS</span>
+<span class="cmd">bonsai switch otherclient</span>  <span class="cmt"># Swap project instantly</span></pre>
+</div><div class="cta"><a href="https://github.com/Agundur-KDE/BonsaiPress2" target="_blank" class="gh-btn">View on GitHub</a></div></div></div>
+<script>
+function playZenChime() {
+    try {
+        var ctx = new (window.AudioContext || window.webkitAudioContext)();
+        [
+            { f: 110,  t: 0,    v: 0.45, d: 4.0 },
+            { f: 220,  t: 0.06, v: 0.30, d: 3.5 },
+            { f: 330,  t: 0.14, v: 0.22, d: 3.0 },
+            { f: 440,  t: 0.26, v: 0.16, d: 2.5 },
+            { f: 660,  t: 0.45, v: 0.10, d: 2.0 },
+            { f: 880,  t: 0.70, v: 0.06, d: 1.8 },
+            { f: 1320, t: 1.00, v: 0.04, d: 1.5 },
+        ].forEach(function(n) {
+            var osc  = ctx.createOscillator();
+            var gain = ctx.createGain();
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.type = 'sine';
+            osc.frequency.value = n.f;
+            var s = ctx.currentTime + n.t;
+            gain.gain.setValueAtTime(0, s);
+            gain.gain.linearRampToValueAtTime(n.v, s + 0.012);
+            gain.gain.exponentialRampToValueAtTime(0.0001, s + n.d);
+            osc.start(s);
+            osc.stop(s + n.d);
+        });
+    } catch(e) { return; }
+}
+
+function showFeatures() {
+    var vs = document.getElementById('video-section');
+    var f  = document.getElementById('features');
+    vs.style.display = 'none';
+    f.style.display  = 'flex';
+    // trigger reflow so transition fires
+    f.offsetHeight;
+    f.style.opacity        = '1';
+    f.style.pointerEvents  = 'all';
+}
+
+function startDemo() {
+    playZenChime();
+
+    document.getElementById('splash').style.display = 'none';
+
+    var vs    = document.getElementById('video-section');
+    var video = document.getElementById('demo-video');
+    vs.style.display = 'flex';
+    vs.style.opacity = '1';
+
+    video.volume = 0.85;
+    var p = video.play();
+    if (p !== undefined) {
+        p.catch(showFeatures);
     }
-    img {
-      max-width: 300px;
-      margin-bottom: 1.5rem;
-    }
-    h1 {
-      font-size: 2rem;
-    }
-  </style>
-</head>
-<body>
-  <img src="/BonsaiPress.png" alt="BonsaiPress Logo">
-  <h1>Coming Soon</h1>
-</body>
-</html>
+}
+</script>
+</body></html>
